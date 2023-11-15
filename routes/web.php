@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Examplec;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,3 +96,20 @@ Route::prefix('training')->group(function(){
     });
 });
 
+/*Route::fallback(function(){
+    return redirect('/');
+});*/
+  
+Route::get('cv', function(){
+    return view('cv');
+});
+
+Route::get('loginpage', function(){
+    return view('login');
+});
+
+Route::post('receive', function(){
+    return 'Data received';
+})->name('received');
+
+Route::get('testpage',[Examplec::class, 'test1']);
