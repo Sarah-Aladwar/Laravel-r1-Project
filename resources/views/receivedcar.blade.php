@@ -8,14 +8,14 @@
 <div class="container">
     <h2>Car Data</h2>
 
-    <p><strong>Title:</strong>{{ $title }}</p>
-    <p><strong>Price:</strong>{{ $price }}</p>
-    <p><strong>Description:</strong>{{ $description }}</p>
+    <p><strong>Title: </strong>{{ $title }}</p>
+    <p><strong>Price: </strong>{{ $price }}</p>
+    <p><strong>Description: </strong>{{ $description }}</p>
 
     @if($published)
-        <p><strong>Status:</strong>Published</p>
+        <p><strong>Status: </strong>Published</p>
     @else
-        <p><strong>Status:</strong>Not Published</p>
+        <p><strong>Status: </strong>Not Published</p>
     @endif
 
 </div>
