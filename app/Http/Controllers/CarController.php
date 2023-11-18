@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PostCarController extends Controller
+class CarController extends Controller
 {
     public function showForm(){
         return view('Addcar');
