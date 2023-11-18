@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Examplec;
+use App\Http\Controllers\PostCarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,3 +114,18 @@ Route::post('receive', function(){
 })->name('received');
 
 Route::get('testpage',[Examplec::class, 'test1']);
+
+/*Route::get('addcar', function(){
+    return view('Addcar');
+});
+
+Route::post('car', function(){
+    return 'Received';
+})->name('receivedcar');*/
+
+Route::controller(PostCarController::class)->group(function (){
+    Route::get('addcar', 'showForm');
+    Route::post('car', 'storeCar')->name('storeCar');
+    Route::get('receivedcar', 'showReceivedCar')->name('receivedcar');
+    
+});

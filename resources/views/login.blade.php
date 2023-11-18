@@ -12,7 +12,7 @@
 
 <div class="container">
   <h2>Vertical (basic) form</h2>
-  <form action="{{ route('received') }}" method="POST">
+  <form action="{{ route('receivedcar') }}" method="POST">
     @csrf <!-- hidden input -->
     <div class="form-group">
       <label for="email">Email:</label>
