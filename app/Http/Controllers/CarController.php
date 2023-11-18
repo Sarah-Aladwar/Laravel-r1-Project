@@ -19,7 +19,7 @@ class CarController extends Controller
         $published = $request->has('remember');
 
         //Flash the data to the session
-        return redirect()->route('receivedcar')->with(['title' => $title, 'price' => $price, 'description' => $description, 'published' => $published]);
+        return redirect()->route('receivedcar')->with(['title'=>$title, 'price'=>$price, 'description'=>$description, 'published'=>$published]);
      }
 
    public function showReceivedCar(){
