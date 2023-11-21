@@ -1,11 +1,11 @@
 <?php
-//This code is to save the data entered in the form into the data base
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Car;
+use App\Models\News;
 
-class CarController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('Addcarform');
+        return view('newsform');
     }
 
     /**
@@ -28,27 +28,18 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //static entry of data into data base
-   /*   $cars = new Car;
-        $cars->cartitle = "BMW";
-        $cars->description = "My description is here";
-        $cars->published = true;
-        $cars->save(); //saves the data into the data base
-        return "Car data added sucessfully"; */
-
-        //dynamic entry of data from form into data base
-        $cars = new Car;
-        $cars->cartitle = $request->title;
-        $cars->description = $request->description;
-        $cars->price = $request->price;
+        $news = new News;
+        $news->title = $request->title;
+        $news->author = $request->author;
+        $news->content = $request->content;
         if(isset($request->remember)){
-            $cars->published = true;
+            $news->published = true;
         }else{
-            $cars->published = false;
+            $news->published = false;
         }
-        $cars->save();
-        return "Car data added sucessfully";
-    }         
+        $news->save();
+        return "News data added sucessfully";
+    }
 
     /**
      * Display the specified resource.

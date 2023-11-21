@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Examplec;
+use App\Http\Controllers\CarformController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\NewsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -115,10 +118,30 @@ Route::post('receive', function(){
 
 Route::get('testpage',[Examplec::class, 'test1']);
 
+//displaying car data entered in a form into another page, method 1:
+/*Route::controller(CarformController::class)->group(function(){
+    Route::get('addcarform', 'showForm');
+    Route::post('car', 'displaycar')->name('display');
+}); */
 
-Route::controller(CarController::class)->group(function (){
-    Route::get('addcar', 'showForm');
-    Route::post('car', 'storeCar')->name('storeCar');
+//displaying car data entered in a form into another page, method 2:
+/*Route::controller(CarformController::class)->group(function(){
+    Route::get('addcarform', 'showForm');
+    Route::post('car', 'storeCar')->name('display');
     Route::get('receivedcar', 'showReceivedCar')->name('receivedcar');
-    
-});
+});  */
+
+//static entry of car data into data base
+//Route::get('addcar',[CarController::class, 'store']);
+
+//dynamic entry of car data from form into data base
+Route::controller(CarController::class)->group(function(){
+    Route::get('addcarform', 'create');
+    Route::post('addcar', 'store')->name('display');
+});    
+
+//dynamic entry of news data from form into data base
+Route::controller(NewsController::class)->group(function(){
+    Route::get('newsform', 'create');
+    Route::post('addnews', 'store')->name('display');
+}); 
