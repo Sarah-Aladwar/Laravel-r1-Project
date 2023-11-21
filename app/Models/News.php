@@ -9,3 +9,4 @@ class News extends Model
 {
     use HasFactory;
 }
+ 

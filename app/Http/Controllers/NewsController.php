@@ -39,7 +39,7 @@ class NewsController extends Controller
         }
         $news->save();
         return "News data added sucessfully";
-    }
+    } 
 
     /**
      * Display the specified resource.

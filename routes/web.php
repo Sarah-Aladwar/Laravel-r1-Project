@@ -144,4 +144,5 @@ Route::controller(CarController::class)->group(function(){
 Route::controller(NewsController::class)->group(function(){
     Route::get('newsform', 'create');
     Route::post('addnews', 'store')->name('display');
-}); 
+});
+ 
