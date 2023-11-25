@@ -12,7 +12,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $news = News::get();
+        return view('news', compact('news'));
     }
 
     /**
@@ -54,7 +55,9 @@ class NewsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $news = News::findOrFail($id);
+        return view('updatenews', compact('news'));
+        
     }
 
     /**

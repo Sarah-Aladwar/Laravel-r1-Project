@@ -156,3 +156,16 @@ Route::get('editcar/{id}', [CarController::class, 'edit']);
 Route::put('updatecar/{id}', [CarController::class, 'update'])->name('update');
 
 
+
+//displaying news data from data base into a table on a web page 
+Route::get('news', [NewsController::class, 'index']);
+
+//edit news data form
+Route::get('editnews/{id}', [NewsController::class, 'edit']);
+
+//update news data into data base
+Route::put('updatenews/{id}', [NewsController::class, 'update'])->name('updatenews');
+
+
+
+
