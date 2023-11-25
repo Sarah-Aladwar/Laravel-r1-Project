@@ -145,4 +145,14 @@ Route::controller(NewsController::class)->group(function(){
     Route::get('newsform', 'create');
     Route::post('addnews', 'store')->name('display');
 });
-  
+
+//displaying car data from data base into a table on a web page  
+Route::get('cars', [CarController::class, 'index']);
+
+//edit car data
+Route::get('editcar/{id}', [CarController::class, 'edit']);
+
+//update car data into data base
+Route::put('updatecar/{id}', [CarController::class, 'update'])->name('update');
+
+
