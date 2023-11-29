@@ -16,15 +16,19 @@
     <thead>
       <tr>
         <th>Title</th>
+        <th>Price</th>
         <th>Description</th>
         <th>Published</th>
         <th>Edit</th>
+        <th>Show</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
       @foreach($cars as $car)
       <tr>
         <td>{{ $car->cartitle }}</td>
+        <td>{{ $car->price }}</td>
         <td>{{ $car->description }}</td>
         <td> {{$car->published ? 'Yes' : 'No'}}
         <!-- @if($car->published) 
@@ -34,6 +38,8 @@
             @endif  -->
         </td>
         <td><a href="editcar/{{ $car->id }}">Edit</a></td>
+        <td><a href="cardetail/{{ $car->id }}">Show</a></td>
+        <td><a href="deletecar/{{ $car->id }}">Delete</a></td>
       </tr>
       @endforeach
     </tbody>    

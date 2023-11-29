@@ -118,33 +118,34 @@ Route::post('receive', function(){
 
 Route::get('testpage',[Examplec::class, 'test1']);
 
-//displaying car data entered in a form into another page, method 1:
+//Carformcontroller: displaying car data entered in a form into another page, method 1:
 /*Route::controller(CarformController::class)->group(function(){
     Route::get('addcarform', 'showForm');
     Route::post('car', 'displaycar')->name('display');
 }); */
 
-//displaying car data entered in a form into another page, method 2:
+//Carformcontroller: displaying car data entered in a form into another page, method 2:
 /*Route::controller(CarformController::class)->group(function(){
     Route::get('addcarform', 'showForm');
     Route::post('car', 'storeCar')->name('display');
     Route::get('receivedcar', 'showReceivedCar')->name('receivedcar');
 });  */
 
+
+//CarController:
+
 //static entry of car data into data base
 //Route::get('addcar',[CarController::class, 'store']);
 
-//dynamic entry of car data from form into data base
+//dynamic entry of car data from form into data base, method 1:
 Route::controller(CarController::class)->group(function(){
     Route::get('addcarform', 'create');
-    Route::post('addcar', 'store')->name('display');
+    Route::post('addcar', 'store')->name('displaycar');
 });    
 
-//dynamic entry of news data from form into data base
-Route::controller(NewsController::class)->group(function(){
-    Route::get('newsform', 'create');
-    Route::post('addnews', 'store')->name('display');
-});
+//dynamic entry of car data from form into data base, method 2:
+
+
 
 //displaying car data from data base into a table on a web page  
 Route::get('cars', [CarController::class, 'index']);
@@ -155,7 +156,19 @@ Route::get('editcar/{id}', [CarController::class, 'edit']);
 //update car data into data base
 Route::put('updatecar/{id}', [CarController::class, 'update'])->name('update');
 
+Route::get('cardetail/{id}', [CarController::class, 'show']);
 
+Route::get('deletecar/{id}', [CarController::class, 'destroy']);
+
+
+
+//NewsController:
+
+//dynamic entry of news data from form into data base
+Route::controller(NewsController::class)->group(function(){
+    Route::get('newsform', 'create');
+    Route::post('addnews', 'store')->name('displaynews');
+});
 
 //displaying news data from data base into a table on a web page 
 Route::get('news', [NewsController::class, 'index']);

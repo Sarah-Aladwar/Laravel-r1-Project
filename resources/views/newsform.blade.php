@@ -12,7 +12,7 @@
 
 <div class="container">
   <h2>Add News</h2>
-  <form action="{{ route('display') }}" method="POST">
+  <form action="{{ route('displaynews') }}" method="POST">
     @csrf
     <div class="form-group">
       <label for="title">Title:</label>

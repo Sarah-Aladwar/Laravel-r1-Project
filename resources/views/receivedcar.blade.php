@@ -18,7 +18,7 @@
         <p><strong>Status: </strong>Not Published</p>
     @endif
 
-</div>
+</div> 
 
 </body>
 </html>

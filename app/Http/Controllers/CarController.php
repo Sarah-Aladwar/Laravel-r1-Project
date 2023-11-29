@@ -7,6 +7,8 @@ use App\Models\Car;
 
 class CarController extends Controller
 {
+    private $columns = ['cartitle', 'price', 'description', 'published'];
+
     /**
      * Display a listing of the resource.
      */
@@ -37,12 +39,13 @@ class CarController extends Controller
         $cars->save(); //saves the data into the data base
         return "Car data added sucessfully"; */
 
+        //insertion into data base method 1:
         //dynamic entry of data from form into data base
         $cars = new Car;
         $cars->cartitle = $request->title;
         $cars->description = $request->description;
         $cars->price = $request->price;
-        if(isset($request->remember)){
+        if(isset($request->published)){
             $cars->published = true;
         }else{
             $cars->published = false;
@@ -56,7 +59,8 @@ class CarController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $car = Car::findOrFail($id);
+        return view('cardetail', compact('car'));
     }
 
     /**
@@ -75,7 +79,14 @@ class CarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-       return "Updated";
+       //Car::where('id', $id)->update($request->only($this->columns));
+
+       $data = $request->only($this->columns);
+       $data['published'] = isset($data['published']) ? true : false;
+       Car::where('id', $id)->update($data);
+
+       //return "updated successfully";
+       return redirect('cars');
     }
 
     /**
@@ -83,6 +94,7 @@ class CarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Car::where('id', $id)->delete();
+        return "Deleted sucessfully";
     }
 }
