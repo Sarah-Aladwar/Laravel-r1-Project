@@ -155,8 +155,19 @@ Route::put('updatecar/{id}', [CarController::class, 'update'])->name('update');
 //Show car details
 Route::get('cardetail/{id}', [CarController::class, 'show']);
 
-//Delete car data
+//(soft) Delete car data 
 Route::get('deletecar/{id}', [CarController::class, 'destroy']);
+
+//Trashed car data
+Route::get('trashed', [CarController::class, 'trashed']);
+
+//Restore car data
+Route::get('restorecar/{id}', [CarController::class, 'restore']);
+
+//Completely Delete car data
+Route::get('forcedelete/{id}', [CarController::class, 'finaldelete']);
+
+
 
 
 

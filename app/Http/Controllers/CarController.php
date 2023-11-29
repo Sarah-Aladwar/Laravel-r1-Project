@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car;
+use Illuminate\Http\RedirectResponse;
 
 class CarController extends Controller
 {
@@ -29,7 +30,7 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         //static entry of data into data base
    /*   $cars = new Car;
@@ -52,6 +53,13 @@ class CarController extends Controller
         }
         $cars->save();
         return "Car data added sucessfully";  */
+
+        //form data validation
+        $request->validate([
+            'cartitle' => 'required|string',
+            'price' => 'required|decimal:0,2',
+            'description' => 'required|string|max:100',
+        ]);
 
 
         //insertion into data base method 2:
@@ -104,10 +112,31 @@ class CarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): RedirectResponse
     {
         Car::where('id', $id)->delete();
-        return "Deleted sucessfully";
+        //return "Deleted sucessfully";
+        return redirect('cars');
+    }
+
+    public function trashed()
+    {
+        $cars = Car::onlyTrashed()->get();
+        return view('trashed', compact('cars'));
+    }
+
+    public function restore(string $id): RedirectResponse
+    {
+        Car::where('id', $id)->restore();
+        return redirect('cars');
+    }
+
+    public function finaldelete(string $id): RedirectResponse
+    {
+        Car::where('id', $id)->forceDelete();
+        return redirect('trashed');
     }
 }
+
+
  
