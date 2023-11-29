@@ -8,7 +8,7 @@
 <div class="container">
     <h2>Car Data</h2>
 
-    <p><strong>Title: </strong>{{ $title }}</p>
+    <p><strong>Title: </strong>{{ $cartitle }}</p>
     <p><strong>Price: </strong>{{ $price }}</p>
     <p><strong>Description: </strong>{{ $description }}</p>
 

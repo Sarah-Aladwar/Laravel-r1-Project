@@ -137,15 +137,11 @@ Route::get('testpage',[Examplec::class, 'test1']);
 //static entry of car data into data base
 //Route::get('addcar',[CarController::class, 'store']);
 
-//dynamic entry of car data from form into data base, method 1:
+//dynamic entry of car data from form into data base, method 1,2:
 Route::controller(CarController::class)->group(function(){
     Route::get('addcarform', 'create');
     Route::post('addcar', 'store')->name('displaycar');
 });    
-
-//dynamic entry of car data from form into data base, method 2:
-
-
 
 //displaying car data from data base into a table on a web page  
 Route::get('cars', [CarController::class, 'index']);
@@ -156,8 +152,10 @@ Route::get('editcar/{id}', [CarController::class, 'edit']);
 //update car data into data base
 Route::put('updatecar/{id}', [CarController::class, 'update'])->name('update');
 
+//Show car details
 Route::get('cardetail/{id}', [CarController::class, 'show']);
 
+//Delete car data
 Route::get('deletecar/{id}', [CarController::class, 'destroy']);
 
 
@@ -178,6 +176,12 @@ Route::get('editnews/{id}', [NewsController::class, 'edit']);
 
 //update news data into data base
 Route::put('updatenews/{id}', [NewsController::class, 'update'])->name('updatenews');
+
+//Show news details
+Route::get('newsdetail/{id}', [NewsController::class, 'show']);
+
+//Delete news data
+Route::get('deletenews/{id}', [NewsController::class, 'destroy']);
 
 
 

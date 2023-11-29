@@ -19,7 +19,7 @@ class CarformController extends Controller
         }else{
             $published = "not published";
         }
-        $msg = "The title is " . $request->title . " and the price is " . $request->price . "<br>" . "The description is " . $request->description . "<br>" . "The car is " . $published;
+        $msg = "The title is " . $request->cartitle . " and the price is " . $request->price . "<br>" . "The description is " . $request->description . "<br>" . "The car is " . $published;
         return $msg;
     }                   //until this line, this would have been sufficient to display the data entered in the form
 
@@ -27,24 +27,24 @@ class CarformController extends Controller
   /*  public function storeCar(Request $request){
    
         //Get the data entered in the form
-        $title = $request->input('title');
+        $cartitle = $request->input('cartitle');
         $price = $request->input('price');
         $description = $request->input('description');
         $published = $request->has('remember');
 
         //Flash the data to the session
-        return redirect()->route('receivedcar')->with(['title'=>$title, 'price'=>$price, 'description'=>$description, 'published'=>$published]);
+        return redirect()->route('receivedcar')->with(['cartitle'=>$cartitle, 'price'=>$price, 'description'=>$description, 'published'=>$published]);
      }
 
    public function showReceivedCar(){
 
         //Retrieve the flashed data from the session
-        $title = session('title');
+        $cartitle = session('cartitle');
         $price = session('price');
         $description = session('description');
         $published = session('published');
 
         //Display the data
-        return view('receivedcar', compact('title', 'price', 'description', 'published'));
+        return view('receivedcar', compact('cartitle', 'price', 'description', 'published'));
     } */
 }

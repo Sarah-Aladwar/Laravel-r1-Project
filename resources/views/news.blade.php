@@ -20,6 +20,8 @@
         <th>Content</th>
         <th>Published</th>
         <th>Edit</th>
+        <th>Show</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -30,6 +32,8 @@
         <td>{{ $n->content }}</td>
         <td>{{$n->published ? 'Yes' : 'No'}}</td>
         <td><a href="editnews/{{ $n->id }}">Edit</a></td>
+        <td><a href="newsdetail/{{ $n->id }}">Show</a></td>
+        <td><a href="deletenews/{{ $n->id }}">Delete</a></td>
       </tr>
       @endforeach
     </tbody>    

@@ -39,9 +39,9 @@ class CarController extends Controller
         $cars->save(); //saves the data into the data base
         return "Car data added sucessfully"; */
 
-        //insertion into data base method 1:
         //dynamic entry of data from form into data base
-        $cars = new Car;
+        //insertion into data base method 1:
+       /* $cars = new Car;
         $cars->cartitle = $request->title;
         $cars->description = $request->description;
         $cars->price = $request->price;
@@ -51,7 +51,19 @@ class CarController extends Controller
             $cars->published = false;
         }
         $cars->save();
-        return "Car data added sucessfully";
+        return "Car data added sucessfully";  */
+
+
+        //insertion into data base method 2:
+        $data = $request->only($this->columns);
+
+        $data['published'] = isset($data['published']) ? true : false;
+        //$data['published'] = $request->has('published') ? true : false;
+        //$data['published'] = $request->filled('published');
+       
+        Car::create($data);
+        return redirect('cars');
+
     }         
 
     /**

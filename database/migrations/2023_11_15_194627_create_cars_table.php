@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('cartitle', 100);
             $table->float('price');
             $table->text('description');
-            $table->boolean('published');
+            $table->boolean('published')->default(1);
             $table->timestamps();
         });
     }
