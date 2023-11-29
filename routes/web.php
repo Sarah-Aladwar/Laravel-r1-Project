@@ -185,4 +185,4 @@ Route::get('deletenews/{id}', [NewsController::class, 'destroy']);
 
 
 
-
+ 

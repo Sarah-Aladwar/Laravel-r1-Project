@@ -110,3 +110,4 @@ class CarController extends Controller
         return "Deleted sucessfully";
     }
 }
+ 

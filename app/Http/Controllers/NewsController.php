@@ -84,3 +84,4 @@ class NewsController extends Controller
         return "Deleted sucessfully";
     }
 } 
+ 
