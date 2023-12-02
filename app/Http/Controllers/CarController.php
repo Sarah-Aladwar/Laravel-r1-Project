@@ -119,7 +119,7 @@ class CarController extends Controller
         return redirect('cars');
     }
 
-    public function trashed()
+    public function trashed() //function to display the trashed cars
     {
         $cars = Car::onlyTrashed()->get();
         return view('trashed', compact('cars'));

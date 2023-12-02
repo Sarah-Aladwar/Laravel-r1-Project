@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100);
             $table->string('author', 100);
-            $table->text('content');
+            $table->text('content'); 
             $table->boolean('published')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -29,4 +30,4 @@ return new class extends Migration
         Schema::dropIfExists('news');
     }
 };
-  
+   

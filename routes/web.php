@@ -161,7 +161,7 @@ Route::get('deletecar/{id}', [CarController::class, 'destroy']);
 //Trashed car data
 Route::get('trashed', [CarController::class, 'trashed']);
 
-//Restore car data
+//Restore trashed car data
 Route::get('restorecar/{id}', [CarController::class, 'restore']);
 
 //Completely Delete car data
@@ -191,8 +191,17 @@ Route::put('updatenews/{id}', [NewsController::class, 'update'])->name('updatene
 //Show news details
 Route::get('newsdetail/{id}', [NewsController::class, 'show']);
 
-//Delete news data
+//(soft) Delete news data
 Route::get('deletenews/{id}', [NewsController::class, 'destroy']);
+
+//Trashed news data
+Route::get('trashednews', [NewsController::class, 'trashed']);
+
+//Restore trashed news data
+Route::get('restorenews/{id}', [NewsController::class, 'restore']);
+
+//Completely Delete car data
+Route::get('forcedeletenews/{id}', [NewsController::class, 'fdnews']);
 
 
 
