@@ -29,7 +29,7 @@
         <td>{{ $n->title }}</td>
         <td>{{ $n->author }}</td>
         <td>{{ $n->content }}</td>
-        <td> {{$n->published ? 'Yes' : 'No'}}
+        <td> {{ $n->published ? 'Yes' : 'No' }}
         </td>
         <td><a href="restorenews/{{ $n->id }}">Restore</a></td>
         <td><a href="forcedeletenews/{{ $n->id }}">Delete</a></td>  

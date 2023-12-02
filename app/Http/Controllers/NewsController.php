@@ -52,7 +52,7 @@ class NewsController extends Controller
         }
         $news->save();
         return "News data added sucessfully"; */
-        
+
     } 
 
     /**
@@ -111,8 +111,6 @@ class NewsController extends Controller
         News::where('id', $id)->forceDelete();
         return redirect('trashednews');
     }
-
-
 
 
 } 

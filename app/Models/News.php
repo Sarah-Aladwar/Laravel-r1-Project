@@ -12,4 +12,3 @@ class News extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = ['title', 'author', 'content', 'published'];
 }
-    

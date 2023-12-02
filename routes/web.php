@@ -200,7 +200,7 @@ Route::get('trashednews', [NewsController::class, 'trashed']);
 //Restore trashed news data
 Route::get('restorenews/{id}', [NewsController::class, 'restore']);
 
-//Completely Delete car data
+//Completely Delete news data
 Route::get('forcedeletenews/{id}', [NewsController::class, 'fdnews']);
 
 
