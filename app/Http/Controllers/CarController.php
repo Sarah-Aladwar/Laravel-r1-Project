@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use Illuminate\Http\RedirectResponse;
+use App\Traits\Common;
 
 class CarController extends Controller
 {
+    use Common;
+
     private $columns = ['cartitle', 'price', 'description', 'published'];
 
     /**
@@ -54,21 +57,36 @@ class CarController extends Controller
         $cars->save();
         return "Car data added sucessfully";  */
 
+        //custom error messages
+        $messages = ['cartitle.required' => 'Title is required',
+                      'description.required' => 'Description is required'
+                    ];
+
         //form data validation
-        $request->validate([
+        $data = $request->validate([
             'cartitle' => 'required|string',
             'price' => 'required|decimal:0,2',
             'description' => 'required|string|max:100',
-        ]);
+            'image' => 'required|mimes:png,jpg,jpeg|max:2048'
+        ], $messages);
 
 
         //insertion into data base method 2:
-        $data = $request->only($this->columns);
+        //$data = $request->only($this->columns);
 
-        $data['published'] = isset($data['published']) ? true : false;
+        $filename = $this->uploadfile($request->image, 'assets/images');
+
+        $data['image'] = $filename;
+
+        $data['published'] = isset($request['published']);
+
+        //return dd($data);
+
+        //cont: insertion into data base method 2, checkbox data insertion options:
+        //$data['published'] = isset($data['published']) ? true : false;
         //$data['published'] = $request->has('published') ? true : false;
         //$data['published'] = $request->filled('published');
-       
+        
         Car::create($data);
         return redirect('cars');
 

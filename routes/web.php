@@ -5,6 +5,8 @@ use App\Http\Controllers\Examplec;
 use App\Http\Controllers\CarformController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\UploadController;
+
 
 
 /*
@@ -168,6 +170,15 @@ Route::get('restorecar/{id}', [CarController::class, 'restore']);
 Route::get('forcedelete/{id}', [CarController::class, 'finaldelete']);
 
 
+
+
+//UploadController:
+
+//Show upload image form
+Route::get('showupload',[UploadController::class, 'showupload']);
+
+//Upload image
+Route::post('upload',[UploadController::class, 'upload'])->name('upload');
 
 
 
