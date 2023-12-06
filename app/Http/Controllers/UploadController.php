@@ -45,9 +45,9 @@ class UploadController extends Controller
     {
         $filename = $this->uploadfile($request->image, 'assets/images');
         return $filename;
-     /*   $file_extension = $request->image->getClientOriginalExtension();
-        $file_name = time() . '.' . $file_extension; //gets the file extension
-        $path = 'assets/images'; //names the image file
+     /*   $file_extension = $request->image->getClientOriginalExtension(); //gets the file extension
+        $file_name = time() . '.' . $file_extension; //names the image file
+        $path = 'assets/images'; //gives the path of the image
         $request->image->move($path, $file_name);//saves the image in the path
         return 'Uploaded';
 

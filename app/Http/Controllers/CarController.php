@@ -115,16 +115,45 @@ class CarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): RedirectResponse
     {
        //Car::where('id', $id)->update($request->only($this->columns));
-
-       $data = $request->only($this->columns);
+       
+       //updating car data without image
+      /* $data = $request->only($this->columns);
        $data['published'] = isset($data['published']) ? true : false;
        Car::where('id', $id)->update($data);
 
        //return "updated successfully";
+       return redirect('cars'); */
+
+       //updating car data including the image
+
+       //custom error messages
+       $messages = ['cartitle.required' => 'Title can not be empty',
+       'description.required' => 'Description is required'
+       ];
+
+       //form data validation
+       $data = $request->validate([
+       'cartitle' => 'required|string',
+       'price' => 'required|decimal:0,2',
+       'description' => 'required|string',
+       'image' => 'sometimes|required|mimes:png,jpg,jpeg|max:2048'
+       ], $messages);
+
+       if($request->hasFile('image')){
+        $filename = $this->uploadfile($request->image, 'assets/images');
+        $data['image'] = $filename;
+       }
+
+       $data['published'] = isset($request['published']);
+
+       //dd($request->all());  
+
+       Car::where('id', $id)->update($data);
        return redirect('cars');
+       
     }
 
     /**
