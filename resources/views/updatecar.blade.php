@@ -36,7 +36,7 @@
       <textarea class="form-control" rows="5" id="description" name="description">{{ old('description', $car->description) }}</textarea>
       @error('description')
        <div class="alert alert-warning">{{ $message }}</div>
-      @enderror
+      @enderror  
     </div> 
     <div class="form-group">
       <label for="image">Image:</label>

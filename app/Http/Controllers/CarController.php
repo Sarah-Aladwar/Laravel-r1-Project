@@ -140,7 +140,7 @@ class CarController extends Controller
        'price' => 'required|decimal:0,2',
        'description' => 'required|string',
        'image' => 'sometimes|required|mimes:png,jpg,jpeg|max:2048'
-       ], $messages);
+       ], $messages);  
 
        if($request->hasFile('image')){
         $filename = $this->uploadfile($request->image, 'assets/images');
