@@ -69,7 +69,7 @@ class PlaceController extends Controller
     {
         $places = Place::latest()->take(6)->get(); //fetch places from the database, only the latest 6
         return view('listrace', compact('places'));
-    }
+    }  
 
     /**
      * Display the specified resource.
