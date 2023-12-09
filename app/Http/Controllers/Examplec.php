@@ -11,12 +11,14 @@ class Examplec extends Controller
     }
 
     public function showplace(){
-        return view('place');
+        return view('showplace');
     }
 
     public function showblog(){
         return view('blog');
-    }
+    } 
+
+
 
 
 

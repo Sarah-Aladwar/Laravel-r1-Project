@@ -6,6 +6,8 @@ use App\Http\Controllers\CarformController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\PlaceController;
+
 
 
 
@@ -122,7 +124,7 @@ Route::post('receive', function(){
 
 Route::get('testpage',[Examplec::class, 'test1']);
 
-Route::get('place',[Examplec::class, 'showplace']);
+//Route::get('showplace',[Examplec::class, 'showplace']);
 
 Route::get('blog',[Examplec::class, 'showblog']);
 
@@ -224,4 +226,15 @@ Route::get('forcedeletenews/{id}', [NewsController::class, 'fdnews']);
 
 
 
- 
+//PlaceController:
+Route::controller(PlaceController::class)->group(function(){
+    Route::get('addplaceform', 'create');
+    Route::post('addplace', 'store')->name('displayplace');
+    Route::get('placelist', 'index');
+    Route::get('listrace', 'exploreplaces');
+
+    Route::get('editplace/{id}', 'edit');
+    Route::put('updateplaces/{id}', 'update')->name('updateplaces');
+
+
+});    
