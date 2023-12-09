@@ -18,9 +18,4 @@ class Examplec extends Controller
         return view('blog');
     } 
 
-
-
-
-
-
 }
