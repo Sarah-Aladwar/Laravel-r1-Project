@@ -118,7 +118,15 @@ Route::post('receive', function(){
     return 'Data received';
 })->name('received');
 
+//Examplec
+
 Route::get('testpage',[Examplec::class, 'test1']);
+
+Route::get('place',[Examplec::class, 'showplace']);
+
+Route::get('blog',[Examplec::class, 'showblog']);
+
+
 
 //Carformcontroller: displaying car data entered in a form into another page, method 1:
 /*Route::controller(CarformController::class)->group(function(){

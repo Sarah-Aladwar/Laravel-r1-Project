@@ -9,4 +9,16 @@ class Examplec extends Controller
     public function test1(){
         return view('login');
     }
+
+    public function showplace(){
+        return view('place');
+    }
+
+    public function showblog(){
+        return view('blog');
+    }
+
+
+
+
 }

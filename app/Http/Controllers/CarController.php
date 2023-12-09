@@ -58,9 +58,11 @@ class CarController extends Controller
         return "Car data added sucessfully";  */
 
         //custom error messages
-        $messages = ['cartitle.required' => 'Title is required',
+      /*  $messages = ['cartitle.required' => 'Title is required',
                       'description.required' => 'Description is required'
-                    ];
+                    ]; */
+
+        $messages = $this->messages();
 
         //form data validation
         $data = $request->validate([
@@ -130,9 +132,7 @@ class CarController extends Controller
        //updating car data including the image
 
        //custom error messages
-       $messages = ['cartitle.required' => 'Title can not be empty',
-       'description.required' => 'Description is required'
-       ];
+       $messages = $this->messages();
 
        //form data validation
        $data = $request->validate([
@@ -140,8 +140,9 @@ class CarController extends Controller
        'price' => 'required|decimal:0,2',
        'description' => 'required|string',
        'image' => 'sometimes|required|mimes:png,jpg,jpeg|max:2048'
-       ], $messages);  
+       ], $messages); 
 
+       //update image if new file is selected
        if($request->hasFile('image')){
         $filename = $this->uploadfile($request->image, 'assets/images');
         $data['image'] = $filename;
@@ -182,6 +183,13 @@ class CarController extends Controller
     {
         Car::where('id', $id)->forceDelete();
         return redirect('trashed');
+    }
+
+    //custom error messages
+    public function messages(){
+        return ['cartitle.required' => 'Title is required',
+        'description.required' => 'Description is required'
+      ];
     }
 }
 

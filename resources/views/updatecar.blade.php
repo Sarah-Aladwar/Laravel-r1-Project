@@ -35,12 +35,13 @@
       <label for="description">Description:</label>
       <textarea class="form-control" rows="5" id="description" name="description">{{ old('description', $car->description) }}</textarea>
       @error('description')
-       <div class="alert alert-warning">{{ $message }}</div>
+        <div class="alert alert-warning">{{ $message }}</div>
       @enderror  
     </div> 
     <div class="form-group">
       <label for="image">Image:</label>
       <input type="file" class="form-control" id="image" name="image" value="{{ $car->image }}">
+      <img src=" {{ asset('assets/images/'.$car->image) }} " alt="cars" style="width:250px;">
       @error('image')
         <div class="alert alert-warning">{{ $message }}</div>
       @enderror
