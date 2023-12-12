@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Explore Places List</title>
+  <title>Trashed Places List</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
 <body>
 
 <div class="container">
-  <h2>Explore Places List</h2>
+  <h2>Trashed Places List</h2>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -21,8 +21,7 @@
         <th>Description</th>
         <th>Published</th>
         <th>Created at</th>
-        <th>Edit</th>
-        <th>Show</th>
+        <th>Restore</th>
         <th>Delete</th>
       </tr>
     </thead>
@@ -35,10 +34,9 @@
         <td>{{ $p->description }}</td>
         <td>{{ $p->published ? 'Yes' : 'No' }}</td>
         <td>{{ $p->created_at }}</td>
-        <td><a href="editplace/{{ $p->id }}">Edit</a></td>
-        <td><a href="placedetail/{{ $p->id }}">Show</a></td>
-        <td><a href="deleteplace/{{ $p->id }}">Delete</a></td>
-      </tr>
+        <td><a href="restoreplace/{{ $p->id }}">Restore</a></td>
+        <td><a href="forcedeleteplace/{{ $p->id }}">Delete</a></td>  
+    </tr>
       @endforeach
     </tbody>    
   </table>

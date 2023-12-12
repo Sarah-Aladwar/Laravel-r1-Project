@@ -233,6 +233,14 @@ Route::controller(PlaceController::class)->group(function(){
     Route::get('placelist', 'index');
     Route::get('listrace', 'exploreplaces');
 
+    Route::get('deleteplace/{id}','destroy');
+    Route::get('trashedplaces','trashed');
+    Route::get('restoreplace/{id}','restore');
+    Route::get('forcedeleteplace/{id}','fd');
+
+
+
+
     Route::get('editplace/{id}', 'edit');
     Route::put('updateplaces/{id}', 'update')->name('updateplaces');
 

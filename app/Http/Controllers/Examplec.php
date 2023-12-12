@@ -15,7 +15,7 @@ class Examplec extends Controller
     }
 
     public function showblog(){
-        return view('blog');
+        return view('blog1');
     } 
 
 }

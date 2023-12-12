@@ -101,7 +101,7 @@ class PlaceController extends Controller
        'title' => 'required|string',
        'price_from' => 'required|decimal:0,2',
        'price_to' => 'required|decimal:0,2',
-       'description' => 'required|string',
+       'description' => 'required|string|max:100',
        'image' => 'sometimes|required|mimes:png,jpg,jpeg|max:2048'
        ], $messages); 
 
@@ -120,8 +120,31 @@ class PlaceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): RedirectResponse
     {
-        //
+        Place::where('id', $id)->delete();
+        return redirect('placelist');
     }
+
+    public function trashed()
+    {
+        $places = Place::onlyTrashed()->get();
+        return view('trashedplaces', compact('places'));
+    }
+
+    public function restore(string $id): RedirectResponse
+    {
+        Place::where('id', $id)->restore();
+        return redirect('placelist');
+    }
+
+    public function fd(string $id): RedirectResponse
+    {
+        Place::where('id', $id)->forceDelete();
+        return redirect('trashedplaces');
+    }
+
+
+
+
 }

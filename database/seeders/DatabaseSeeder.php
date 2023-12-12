@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Car;
+use App\Models\Place;
 
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,8 @@ class DatabaseSeeder extends Seeder
         //creating users table through factories
         User::factory(10)->create();
         Car::factory(10)->create();
+        Place::factory(100)->create();
+
 
 
         //creating users table directly/manually
