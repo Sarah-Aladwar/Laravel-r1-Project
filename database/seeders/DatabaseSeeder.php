@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
         Place::factory(100)->create();
 
 
-
         //creating users table directly/manually
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

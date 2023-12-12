@@ -23,7 +23,7 @@ class PlaceFactory extends Factory
             'description'=> fake()-> text($maxNbChars = 100),
             'image'=> fake()-> randomElement(['1702142510.jpg', '1702142648.jpg', '1702142756.jpg', '1702143200.jpg', '1702415226.jpg', '1702415256.jpg']),
             'published'=> fake()-> boolean(),
-            'created_at'=> fake()-> dateTimeBetween($startDate = '-1 year', $endDate = 'now'),
+            'created_at'=> fake()-> dateTimeBetween($startDate = '-1 year', $endDate = 'now'), 
         ];
     }
 }

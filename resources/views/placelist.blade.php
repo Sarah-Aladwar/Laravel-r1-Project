@@ -37,7 +37,7 @@
         <td>{{ $p->created_at }}</td>
         <td><a href="editplace/{{ $p->id }}">Edit</a></td>
         <td><a href="placedetail/{{ $p->id }}">Show</a></td>
-        <td><a href="deleteplace/{{ $p->id }}">Delete</a></td>
+        <td><a href="deleteplace/{{ $p->id }}">Delete</a></td> 
       </tr>
       @endforeach
     </tbody>    

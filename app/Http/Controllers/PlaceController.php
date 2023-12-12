@@ -145,6 +145,4 @@ class PlaceController extends Controller
     }
 
 
-
-
 }

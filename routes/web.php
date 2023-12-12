@@ -238,9 +238,6 @@ Route::controller(PlaceController::class)->group(function(){
     Route::get('restoreplace/{id}','restore');
     Route::get('forcedeleteplace/{id}','fd');
 
-
-
-
     Route::get('editplace/{id}', 'edit');
     Route::put('updateplaces/{id}', 'update')->name('updateplaces');
 

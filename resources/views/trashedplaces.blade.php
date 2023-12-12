@@ -35,7 +35,7 @@
         <td>{{ $p->published ? 'Yes' : 'No' }}</td>
         <td>{{ $p->created_at }}</td>
         <td><a href="restoreplace/{{ $p->id }}">Restore</a></td>
-        <td><a href="forcedeleteplace/{{ $p->id }}">Delete</a></td>  
+        <td><a href="forcedeleteplace/{{ $p->id }}">Delete</a></td>   
     </tr>
       @endforeach
     </tbody>    
