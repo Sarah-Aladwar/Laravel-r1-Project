@@ -11,6 +11,7 @@
     <p><strong>Title: </strong>{{ $car->cartitle }}</p>
     <p><strong>Price: </strong>{{ $car->price }}</p>
     <p><strong>Description: </strong>{{ $car->description }}</p>
+    <p><strong>Category: </strong>{{ $car->category->category_name }}</p>
 
     @if($car->published)
         <p><strong>Status: </strong>Published</p>

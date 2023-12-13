@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Car;
 use App\Models\Place;
+use App\Models\Category;
 
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         //creating users table through factories
         User::factory(10)->create();
+        Category::factory(5)->create();
         Car::factory(10)->create();
         Place::factory(100)->create();
 

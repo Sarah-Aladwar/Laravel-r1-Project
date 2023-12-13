@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use Illuminate\Http\RedirectResponse;
 use App\Traits\Common;
+use App\Models\Category;
+
 
 class CarController extends Controller
 {
@@ -27,7 +29,9 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('Addcarform');
+        //return view('Addcarform');
+        $cat = Category::select('id', 'category_name')->get();
+        return view('Addcarform', compact('cat'));
     }
 
     /**
