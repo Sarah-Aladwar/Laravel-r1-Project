@@ -46,6 +46,17 @@
         <div class="alert alert-warning">{{ $message }}</div>
       @enderror
     </div>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select class="form-control" id="category" name="category_id">
+      @foreach($cat as $c)
+        <option value="{{ $c->id }}" {{ $car->category_id == $c->id ? 'selected' : '' }}>{{ $c->category_name }}</option>
+      @endforeach
+      </select>
+      @error('category_id')
+        <div class="alert alert-warning">{{ $message }}</div>
+      @enderror
+    </div>
     <div class="checkbox">
       <label><input type="checkbox" name="published" @checked($car->published)>Published</label>
     </div>

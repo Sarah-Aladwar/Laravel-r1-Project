@@ -44,12 +44,15 @@
     </div>
     <div class="form-group">
     <label for="category">Category:</label>
-    <select name="category_id" id="">
-      <option value="">Select Category</option>
-      @foreach($cat as $c)
-      <option value="{{ $c->id }}">{{$c->category_name}}</option>
-      @endforeach
-    </select>
+      <select name="category_id" id="">
+        <option value="">Select Category</option>
+        @foreach($cat as $c)
+          <option value="{{ $c->id }}" {{ old('category_id') == $c->id ? 'selected' : '' }} >{{$c->category_name}}</option>
+        @endforeach
+      </select>
+      @error('category_id')
+        <div class="alert alert-warning">{{ $message }}</div>
+      @enderror
     </div>
     <div class="checkbox">
       <label><input type="checkbox" name="published">Published</label>

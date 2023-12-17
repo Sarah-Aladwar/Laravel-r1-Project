@@ -73,7 +73,8 @@ class CarController extends Controller
             'cartitle' => 'required|string',
             'price' => 'required|decimal:0,2',
             'description' => 'required|string|max:100',
-            'image' => 'required|mimes:png,jpg,jpeg|max:2048'
+            'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'category_id' => 'required|exists:categories,id'
         ], $messages);
 
 
@@ -93,7 +94,12 @@ class CarController extends Controller
         //$data['published'] = $request->has('published') ? true : false;
         //$data['published'] = $request->filled('published');
         
-        Car::create($data);
+        $car = Car::create($data);
+
+        $category = Category::find($request->category_id);
+        $car->category()->associate($category);
+        $car->save();
+
         return redirect('cars');
 
     }         
@@ -115,7 +121,8 @@ class CarController extends Controller
         //return 'The car id is ' . $id;
         //return view('editcar', compact('id'));
         $car = Car::findOrFail($id);
-        return view('updatecar', compact('car'));
+        $cat = Category::select('id', 'category_name')->get();
+        return view('updatecar', compact('car', 'cat'));
     }
 
     /**
@@ -143,7 +150,8 @@ class CarController extends Controller
        'cartitle' => 'required|string',
        'price' => 'required|decimal:0,2',
        'description' => 'required|string',
-       'image' => 'sometimes|required|mimes:png,jpg,jpeg|max:2048'
+       'image' => 'sometimes|required|mimes:png,jpg,jpeg|max:2048',
+       'category_id' => 'required|exists:categories,id'
        ], $messages); 
 
        //update image if new file is selected
@@ -152,11 +160,20 @@ class CarController extends Controller
         $data['image'] = $filename;
        }
 
+       // Update the car's category if the category_id is provided
+       if ($request->filled('category_id')) {
+        $car = Car::find($id);
+        $category = Category::find($request->category_id);
+        $car->category()->associate($category);
+        $car->save();
+       }
+
        $data['published'] = isset($request['published']);
 
        //dd($request->all());  
 
-       Car::where('id', $id)->update($data);
+       $car = Car::where('id', $id)->update($data);   
+
        return redirect('cars');
        
     }

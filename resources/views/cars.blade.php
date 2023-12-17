@@ -18,6 +18,7 @@
         <th>Title</th>
         <th>Price</th>
         <th>Description</th>
+        <th>Category</th>
         <th>Published</th>
         <th>Edit</th>
         <th>Show</th>
@@ -30,6 +31,7 @@
         <td>{{ $car->cartitle }}</td>
         <td>{{ $car->price }}</td>
         <td>{{ $car->description }}</td>
+        <td>{{ $car->category->category_name }}</td>
         <td> {{$car->published ? 'Yes' : 'No'}}
         <!-- @if($car->published) 
               Yes 
