@@ -151,7 +151,7 @@ class CarController extends Controller
        'price' => 'required|decimal:0,2',
        'description' => 'required|string',
        'image' => 'sometimes|required|mimes:png,jpg,jpeg|max:2048',
-       'category_id' => 'required|exists:categories,id'
+       'category_id' => 'required'
        ], $messages); 
 
        //update image if new file is selected
@@ -160,13 +160,13 @@ class CarController extends Controller
         $data['image'] = $filename;
        }
 
-       // Update the car's category if the category_id is provided
-       if ($request->filled('category_id')) {
+       //Update the car category if the category_id is provided
+      /* if($request->filled('category_id')){
         $car = Car::find($id);
         $category = Category::find($request->category_id);
         $car->category()->associate($category);
         $car->save();
-       }
+       } */
 
        $data['published'] = isset($request['published']);
 
