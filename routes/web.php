@@ -7,6 +7,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\ContactController;
 
 
 
@@ -242,7 +243,18 @@ Route::controller(PlaceController::class)->group(function(){
     Route::put('updateplaces/{id}', 'update')->name('updateplaces');
 
 
-});    
+}); 
+
+
+//Authentication
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+//ContactController:
+Route::get('contact', [ContactController::class, 'index']);
+
+Route::post('submit', [ContactController::class, 'submitForm'])->name('submit');
+
