@@ -129,6 +129,9 @@ Route::get('testpage',[Examplec::class, 'test1']);
 
 Route::get('blog',[Examplec::class, 'showblog']);
 
+//session
+Route::get('session',[Examplec::class, 'mysession']);
+
 
 
 //Carformcontroller: displaying car data entered in a form into another page, method 1:
@@ -157,7 +160,7 @@ Route::controller(CarController::class)->group(function(){
 });    
 
 //displaying car data from data base into a table on a web page  
-Route::get('cars', [CarController::class, 'index']);
+Route::get('cars', [CarController::class, 'index'])->middleware('verified');
 
 //edit car data
 Route::get('editcar/{id}', [CarController::class, 'edit']);
