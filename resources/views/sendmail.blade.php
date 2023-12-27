@@ -73,10 +73,17 @@
 </head>
 <body>
 
+
     <main>
         <form action="{{ route('submit') }}" method="POST">
             @csrf
-            <h1>Contact Us</h1>
+        <div class="container">
+         <div>
+           <a href="{{ LaravelLocalization::getlocalizedUrl('en') }}">English</a>
+           <a href="{{ LaravelLocalization::getlocalizedUrl('ar') }}">Arabic</a>
+         </div>
+        </div>
+            <h1>{{ __('messages.contactForm') }}</h1>
 
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" value="{{ old('name')}}" required>

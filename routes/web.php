@@ -257,7 +257,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //ContactController:
-Route::get('contact', [ContactController::class, 'index']);
+//Route::get('contact', [ContactController::class, 'index']);
 
-Route::post('submit', [ContactController::class, 'submitForm'])->name('submit');
+//Route::post('submit', [ContactController::class, 'submitForm'])->name('submit');
 
+//Multilanguage routing for contact
+Route::group([
+      'prefix' => LaravelLocalization::setLocale(),
+      'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+    ], function(){ //routes
+      Route::get('contact', [ContactController::class, 'index']);
+      Route::post('submit', [ContactController::class, 'submitForm'])->name('submit');
+});
