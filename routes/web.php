@@ -154,10 +154,10 @@ Route::get('session',[Examplec::class, 'mysession']);
 //Route::get('addcar',[CarController::class, 'store']);
 
 //dynamic entry of car data from form into data base, method 1,2:
-Route::controller(CarController::class)->group(function(){
+/*Route::controller(CarController::class)->group(function(){
     Route::get('addcarform', 'create');
     Route::post('addcar', 'store')->name('displaycar');
-});    
+});   */
 
 //displaying car data from data base into a table on a web page  
 Route::get('cars', [CarController::class, 'index'])->middleware('verified');
@@ -268,4 +268,14 @@ Route::group([
     ], function(){ //routes
       Route::get('contact', [ContactController::class, 'index']);
       Route::post('submit', [ContactController::class, 'submitForm'])->name('submit');
+});
+
+
+//Multilanguage routing for add car form
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+  ], function(){ //routes
+    Route::get('addcarform', [CarController::class, 'create']);
+    Route::post('addcar', [CarController::class, 'store'])->name('displaycar');
 });
